@@ -1,6 +1,8 @@
 const chatInput = document.querySelector(".chat-input textarea");
 const sendChatBtn = document.querySelector(".chat-input span");
 const chatbox = document.querySelector(".chatbox");
+const chatbotToggler = document.querySelector(".chat-toggler");
+const chatbotCloseBtn = document.querySelector("#close-btn");
 
 
 let userMessage;
@@ -10,8 +12,9 @@ const createChatLi = (message, className) => {
     // Create a chat <li> element with a passed message and a className
     const chatLi = document.createElement("li");
     chatLi.classList.add("chat", className);
-    let chatContent = className === "outgoing" ? `<p>${message}` : `<span class="material-symbols-outlines"><img src="logo1.png" alt=""></span><p>${message}`;
+    let chatContent = className === "outgoing" ? `<p></p>` : `<span class="material-symbols-outlines"><img src="logo1.png" alt=""></span><p></p>`;
     chatLi.innerHTML = chatContent;
+    chatLi.querySelector("p").textContent = message;
     return chatLi;
 }
 
@@ -34,24 +37,28 @@ const generateResponse = (incomingChatLi) =>{
         messageElement.textContent = data.choices[0].message.content;
     }).catch((error) => {
         messageElement.textContent = "Oops! Something went wrong. Please try again.";
-    })
+    }).finally(() =>chatbox.scrollTo(0, chatbox.scrollHeight));
 }
 
 const handleChat = () => {
     userMessage = chatInput.value.trim();
     if(!userMessage) return;
+    chatInput.value = "";
 
     // Append user input to the chatbot
     chatbox.appendChild(createChatLi(userMessage, "outgoing"));
+    chatbox.scrollTo(0, chatbox.scrollHeight);
 
     setTimeout(() => {
         // Display "Thinking..." message while waiting for response
         const incomingChatLi = createChatLi("Thinking...", "incoming")
         chatbox.appendChild(incomingChatLi);
+        chatbox.scrollTo(0, chatbox.scrollHeight);
         generateResponse(incomingChatLi);
     }, 600);
 }
 
 sendChatBtn.addEventListener("click", handleChat);
 
-// https://www.youtube.com/watch?v=Bv8FORu-ACA&t=1093s&ab_channel=CodingNepal
+chatbotToggler.addEventListener("click", () => document.body.classList.toggle("show-chatbot"));
+chatbotCloseBtn.addEventListener("click", () => document.body.classList.remove("show-chatbot"));
