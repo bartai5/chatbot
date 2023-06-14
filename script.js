@@ -20,13 +20,16 @@ const createChatLi = (message, className) => {
 const generateResponse = (incomingChatLi) =>{
     let response;
 
+    userMessage = userMessage.toLowerCase();
+    console.log(userMessage);
+
     if (userMessage.includes("hello") || userMessage.includes("hi") || userMessage.includes("how are you")){
         response = "Hello... Welcome to Beta Geo-Consultants LTD | Solutions To Your Water Problems.\nHow can I help you today?";
     }
     else if (userMessage.includes("beta") || userMessage.includes("consultants") || userMessage.includes("beta-geo") || userMessage.includes("geo")){
         response = "Beta Geo-Consultants LTD is leading water drilling consultants agency specializing in a comprehensive range of services to meet the diverse water needs of communities, industries, and businesses. \n We offer expertise in hydrological survey, borehole drilling, borehole camera inspection, submersible pump installation, pump testing services, elevated tower construction, and borehole solarization services.";
     }
-    else if (userMessage.includes("services") || userMessage.includes("offer") || userMessage.includes("offered")){
+    else if (userMessage.includes("services") || userMessage.includes("offer") || userMessage.includes("service")){
         response = "At Beta Geo-Consultants LTD, The following services are offered. \n1. Hydrological Survey Services. \n2. Borehole Drilling Services. \n3. Borehole Camera Inspection Services. \n4. Submersible Pump Installation Services. \n5. Pump Testing Services. \n6. Elevated Tower Constraction Services. \n7. Borehole Solarization Services";
     }
     else if (userMessage.includes("borehole") || userMessage.includes("drilling") || userMessage.includes("bore hole")){
