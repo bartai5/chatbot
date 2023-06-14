@@ -15,23 +15,23 @@ for (let word of words) {
 
 
 // HHHHHHHHHHHH
-document.addEventListener("DOMContentLoaded", function() {
-  var chatDisplay = document.getElementById("chat-display");
-  var messageInput = document.getElementById("message-input");
-  var sendButton = document.getElementById("send-button");
+// document.addEventListener("DOMContentLoaded", function() {
+//   var chatDisplay = document.getElementById("chat-display");
+//   var messageInput = document.getElementById("message-input");
+//   var sendButton = document.getElementById("send-button");
 
-  sendButton.addEventListener("click", function() {
-      var message = messageInput.value;
-      if (message !== "") {
-          appendMessage("You: " + message);
-          messageInput.value = "";
-          // You can add your own logic here to send the message to the admin
-      }
-  });
+//   sendButton.addEventListener("click", function() {
+//       var message = messageInput.value;
+//       if (message !== "") {
+//           appendMessage("You: " + message);
+//           messageInput.value = "";
+//           // You can add your own logic here to send the message to the admin
+//       }
+//   });
 
-  function appendMessage(message) {
-      var messageElement = document.createElement("div");
-      messageElement.textContent = message;
-      chatDisplay.appendChild(messageElement);
-  }
-});
+//   function appendMessage(message) {
+//       var messageElement = document.createElement("div");
+//       messageElement.textContent = message;
+//       chatDisplay.appendChild(messageElement);
+//   }
+// });
