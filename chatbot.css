@@ -146,6 +146,7 @@ body{
     height: 50px;
     width: 50px;
     color: #fff;
+    cursor: pointer;
     background: #724ae8;
     border: none;
     outline: none;
